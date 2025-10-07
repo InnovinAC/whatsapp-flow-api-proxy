@@ -90,7 +90,7 @@ app.get('/webhook', async (req, res) => {
 app.post('/flow', async (req, res) => {
   try {
     const result = await makeProxyRequest('POST', '/webhooks/whatsapp/flow', req.body);
-    res.status(result.status).json(result.data);
+    res.status(result.status).send(result.data);
   } catch (error) {
     console.error('Proxy error:', error.message);
     res.status(500).json({ error: 'Proxy request failed', details: error.message });
